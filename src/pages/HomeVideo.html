@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero con Video</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: sans-serif;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 1;
+            text-align: center;
+            padding: 2rem;
+            background: rgba(0, 0, 0, 0.4);
+            /* opcional, para legibilidad */
+            border-radius: 12px;
+        }
+
+        /* Ocultar video y mostrar imagen en móviles si es necesario */
+        @media (max-width: 768px) {
+            .hero-video {
+                display: none;
+            }
+
+            .hero-section {
+                background: url('fallback.jpg') center center / cover no-repeat;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="hero-section">
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="fallback.jpg">
+            <source src="../public/Video.mp4" type="video/mp4">
+            <source src="../public/video.webm" type="video/webm">
+            Tu navegador no soporta videos HTML5.
+        </video>
+
+        <div class="hero-content">
+            <h1>Bienvenidos a Nuestro Refugio</h1>
+            <p>Descubre una experiencia inolvidable</p>
+        </div>
+    </section>
+
+</body>
+
+</html>
